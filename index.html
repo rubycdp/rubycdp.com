@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ferrum — The fearless Ruby Chrome driver</title>
+  <meta name="description" content="Ferrum, Cuprite and Vessel — a trilogy of Ruby tools that drive Chrome over the DevTools Protocol. By Bitsbeam.">
+  <meta name="theme-color" content="#0b0b0b">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Bungee&family=Luckiest+Guy&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+  <link rel="stylesheet" href="application.css">
+  <script src="application.js" defer></script>
+</head>
+
+<!--
+  data-issue sets which issue the page opens on: ferrum | cuprite | vessel | all.
+  Deploy the same three files to every subdomain and change only this attribute.
+  A ?issue=… query parameter overrides it (handy for sharing links).
+-->
+<body data-issue="ferrum">
+  <div class="app" id="app">
+
+    <!--
+      Every element with [data-render] is a "stack": application.js fills it with
+      three identical layers (one per project), each clipped by the seams.
+    -->
+    <header class="stack stack--nav" data-render="nav"></header>
+
+    <main>
+      <section class="stack stack--hero" data-render="hero"></section>
+      <section class="stack" data-render="ticker" aria-hidden="true"></section>
+      <section class="stack" id="start" data-render="start"></section>
+      <section class="stack" id="powers" data-render="powers"></section>
+      <section class="stack" id="universe" data-render="universe"></section>
+    </main>
+
+    <footer class="stack" data-render="footer"></footer>
+
+    <!-- Seams: the vertical gutters that split the screen between issues -->
+    <div class="seam seam--2" aria-hidden="true"></div>
+    <div class="seam seam--1" aria-hidden="true"></div>
+
+    <!-- Drag handles. Each moves one seam; keyboard arrows work when focused. -->
+    <button class="handle handle--2" data-seam="2" type="button" aria-label="Drag to switch between Cuprite and Vessel">
+      <span class="handle__label theme--cuprite">CU</span>
+      <span class="handle__arrows">◀▶</span>
+      <span class="handle__label theme--vessel">VS</span>
+    </button>
+    <button class="handle handle--1 is-nudging" data-seam="1" type="button" aria-label="Drag to switch between Ferrum and Cuprite">
+      <span class="handle__label theme--ferrum">FE</span>
+      <span class="handle__arrows">◀▶</span>
+      <span class="handle__label theme--cuprite">CU</span>
+    </button>
+
+    <!-- Issue picker -->
+    <nav class="switcher" aria-label="Choose an issue">
+      <button class="switcher__btn theme--ferrum" type="button" data-go="ferrum">Ferrum<small>#1</small></button>
+      <button class="switcher__btn theme--cuprite" type="button" data-go="cuprite">Cuprite<small>#2</small></button>
+      <button class="switcher__btn theme--vessel" type="button" data-go="vessel">Vessel<small>#3</small></button>
+      <button class="switcher__btn switcher__btn--all" type="button" data-go="all">All 3<small>⟷</small></button>
+    </nav>
+  </div>
+
+  <noscript>
+    <p class="noscript">
+      Ferrum, Cuprite and Vessel — Ruby tools that drive Chrome over CDP.
+      <a href="https://github.com/rubycdp/ferrum">Ferrum</a> ·
+      <a href="https://github.com/rubycdp/cuprite">Cuprite</a> ·
+      <a href="https://github.com/rubycdp/vessel">Vessel</a> · by Bitsbeam
+    </p>
+  </noscript>
+</body>
+</html>
